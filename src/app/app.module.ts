@@ -14,11 +14,18 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { StudentInfoComponent } from './student-info/student-info.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SpinDialogComponent } from './dialog/spin-dialog/spin-dialog.component';
+import { InfoDialogComponent } from './dialog/info-dialog/info-dialog.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StudentInfoComponent,
+    SpinDialogComponent,
+    InfoDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +42,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatDialogModule,
     MatTableModule,
     MatPaginatorModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,63 @@
+<div class="manage_student">
+  <div class="create_student_block">
+    <p class="create_student_title">新增學生</p>
+    <form [formGroup]="student_info">
+      <mat-form-field class="create_student_input">
+        <mat-label>姓名</mat-label>
+        <input autocomplete="off" matInput type="text" formControlName="student_name">
+      </mat-form-field>
+      <mat-form-field class="create_student_input">
+        <mat-label>准考證</mat-label>
+        <input autocomplete="off" matInput type="text" formControlName="student_id">
+      </mat-form-field>
+      <mat-form-field class="create_student_input">
+        <mat-label>電話</mat-label>
+        <input autocomplete="off" matInput type="text" formControlName="student_phone">
+      </mat-form-field>
+      <mat-form-field class="create_student_input">
+        <mat-label>Email</mat-label>
+        <input autocomplete="off" matInput type="text" formControlName="student_email">
+      </mat-form-field>
+      <button class="submit_button" mat-stroked-button color="primary" (click)="create_student_submit()">提交</button>
+    </form>
+  </div>
+
+  <div class="delete_student_block">
+    <p>刪除學生</p>
+    <mat-form-field class="create_student_input">
+      <mat-label>准考證</mat-label>
+      <input autocomplete="off" matInput type="text" [(ngModel)]="deleteStudentID">
+    </mat-form-field>
+    <button class="submit_button" mat-stroked-button color="primary" (click)="delete_student_submit()">提交</button>
+  </div>
+
+  <div class="student_table_block">
+    <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef class="point"> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="ID">
+        <th mat-header-cell *matHeaderCellDef class="point"> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Phone">
+        <th mat-header-cell *matHeaderCellDef class="point"> Phone </th>
+        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef class="point"> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 30, 50, 100]">
+    </mat-paginator>
+  </div>
+</div>
