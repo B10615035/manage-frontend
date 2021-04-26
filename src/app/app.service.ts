@@ -54,4 +54,10 @@ export class AppService {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token),
     }).pipe(delay(1500))
   }
+
+  getAllCompany(): Observable < any > {
+    return this.httpClient.get < any > ("http://127.0.0.1:8001/manage/company", {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.token),
+    }).pipe(delay(1500))
+  }
 }

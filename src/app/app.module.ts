@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SpinDialogComponent } from './dialog/spin-dialog/spin-dialog.component';
 import { InfoDialogComponent } from './dialog/info-dialog/info-dialog.component';
 import { LoginComponent } from './login/login.component';
+import { CompanyInfoComponent } from './company-info/company-info.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { LoginComponent } from './login/login.component';
     StudentInfoComponent,
     SpinDialogComponent,
     InfoDialogComponent,
-    LoginComponent
+    LoginComponent,
+    CompanyInfoComponent
   ],
   imports: [
     BrowserModule,
