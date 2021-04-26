@@ -7,6 +7,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import {
   MatSnackBar
 } from '@angular/material/snack-bar';
@@ -16,6 +17,7 @@ import {
 import {
   AppService
 } from '../app.service';
+import { SpinDialogComponent } from '../dialog/spin-dialog/spin-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +26,7 @@ import {
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private snackBar: MatSnackBar, private appService: AppService, private router:Router) {}
+  constructor(private snackBar: MatSnackBar, private appService: AppService, private router:Router, private dialog:MatDialog) {}
 
   ngOnInit(): void {}
 
@@ -40,16 +42,19 @@ export class LoginComponent implements OnInit {
         panelClass: 'warn_snackBar'
       })
     } else {
+      var spinDialog = this.dialog.open(SpinDialogComponent)
       this.appService.loginRequest(this.login_info).subscribe(
         next => {
           this.appService.token = next.info
           this.router.navigate(['student'])
+          spinDialog.close()
         },
         error => {
           this.snackBar.open(error.error.info, 'Close', {
             duration: 1500,
             panelClass: 'warn_snackBar'
           })
+          spinDialog.close()
         }
       )
     }

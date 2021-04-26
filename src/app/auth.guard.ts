@@ -5,7 +5,8 @@ import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  UrlTree
+  UrlTree,
+  Router
 } from '@angular/router';
 import {
   Observable
@@ -19,7 +20,7 @@ import {
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private appService:AppService){
+  constructor(private appService:AppService, private router:Router){
 
   }
 
@@ -30,8 +31,9 @@ export class AuthGuard implements CanActivate {
   checkToken() {
     if(this.appService.token != "")
       return true
-    else
+    else{
+      this.router.navigate([''])
       return false
+    }
   }
-
 }
