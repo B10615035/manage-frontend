@@ -3,11 +3,11 @@
     <form [formGroup]="login_info">
       <mat-form-field class="login_input">
         <mat-label>姓名</mat-label>
-        <input matInput type="text" formControlName="student_name">
+        <input autocomplete="off" matInput type="text" formControlName="student_name">
       </mat-form-field>
       <mat-form-field class="login_input">
         <mat-label>密碼</mat-label>
-        <input matInput type="password" formControlName="student_password">
+        <input  autocomplete="off" matInput type="password" formControlName="student_password">
       </mat-form-field>
       <button class="submit_button" mat-stroked-button color="primary" (click)="login_submit()">提交</button>
     </form>

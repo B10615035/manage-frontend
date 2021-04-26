@@ -6,9 +6,10 @@ import { LoginComponent } from './login/login.component';
 import { StudentInfoComponent } from './student-info/student-info.component';
 
 const routes: Routes = [
+  {path:'login', component:LoginComponent},
   {path:'student', component:StudentInfoComponent, canActivate: [AuthGuard]},
   {path:'company', component:CompanyInfoComponent, canActivate: [AuthGuard]},
-  {path:'', component:LoginComponent}
+  {path:'', component:StudentInfoComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

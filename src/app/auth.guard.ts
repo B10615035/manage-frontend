@@ -12,6 +12,9 @@ import {
   Observable
 } from 'rxjs';
 import {
+  tap
+} from 'rxjs/operators';
+import {
   AppService
 } from './app.service';
 
@@ -20,7 +23,7 @@ import {
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private appService:AppService, private router:Router){
+  constructor(private appService: AppService, private router: Router) {
 
   }
 
@@ -28,11 +31,19 @@ export class AuthGuard implements CanActivate {
     return this.checkToken();
   }
 
-  checkToken() {
-    if(this.appService.token != "")
-      return true
-    else{
-      this.router.navigate([''])
+  checkToken(): boolean | Observable < boolean > {
+    if (this.appService.checkCookie())
+      return this.appService.checkTokenInService().pipe(
+        tap(
+          next => {},
+          error => {
+            this.router.navigate(['login'])
+          },
+          () => {}
+        )
+      )
+    else {
+      this.router.navigate(['login'])
       return false
     }
   }
