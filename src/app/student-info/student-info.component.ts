@@ -50,7 +50,7 @@ export class StudentInfoComponent implements OnInit {
     })
   }
 
-  displayedColumns: string[] = ["Name", "ID", "Phone", "Email"]
+  displayedColumns: string[] = ["Name", "ID", "Phone", "Email", "Company"]
   dataSource
 
   student_info = new FormGroup({
