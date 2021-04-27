@@ -27,7 +27,7 @@ export class AppService {
       name: login_info.value.student_name,
       password: login_info.value.student_password
     }
-    return this.httpClient.post < any > (`http://127.0.0.1:8001/manage/login`, data, {
+    return this.httpClient.post < any > (`http://54.199.212.42:8001/manage/login`, data, {
       headers: new HttpHeaders,
     }).pipe(delay(1500))
   }
@@ -37,27 +37,27 @@ export class AppService {
       name: student_info.value.student_name,
       id: student_info.value.student_id,
       email: student_info.value.student_email,
-      phone: student_info.value.student_phone,
+      school: student_info.value.student_school,
     }
-    return this.httpClient.post < any > ("http://127.0.0.1:8001/manage/student", data, {
+    return this.httpClient.post < any > ("http://54.199.212.42:8001/manage/student", data, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.getCookie()),
     }).pipe(delay(1500))
   }
 
   getAllStudent(): Observable < any > {
-    return this.httpClient.get < any > ("http://127.0.0.1:8001/manage/student", {
+    return this.httpClient.get < any > ("http://54.199.212.42:8001/manage/student", {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.getCookie()),
     }).pipe(delay(1500))
   }
 
   deleteStudent(student_id): Observable < any > {
-    return this.httpClient.delete < any > (`http://127.0.0.1:8001/manage/student/${student_id}`, {
+    return this.httpClient.delete < any > (`http://54.199.212.42:8001/manage/student/${student_id}`, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.getCookie()),
     }).pipe(delay(1500))
   }
 
   getAllCompany(): Observable < any > {
-    return this.httpClient.get < any > ("http://127.0.0.1:8001/manage/company", {
+    return this.httpClient.get < any > ("http://54.199.212.42:8001/manage/company", {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.getCookie()),
     }).pipe(delay(1500))
   }
@@ -79,7 +79,7 @@ export class AppService {
     var data = this.getCookie()
     if (!data)
       data = "login"
-    return this.httpClient.post < any > (`http://127.0.0.1:8001/auth`, {
+    return this.httpClient.post < any > (`http://54.199.212.42:8001/auth`, {
       token: data
     }, {
       headers: new HttpHeaders(),
@@ -92,5 +92,9 @@ export class AppService {
 
   checkCookie() {
     return this.cookieService.check('token')
+  }
+
+  deleteCookie(){
+    this.cookieService.deleteAll()
   }
 }

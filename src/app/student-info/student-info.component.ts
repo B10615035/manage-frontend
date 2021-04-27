@@ -50,14 +50,14 @@ export class StudentInfoComponent implements OnInit {
     })
   }
 
-  displayedColumns: string[] = ["Name", "ID", "Phone", "Email", "Company"]
+  displayedColumns: string[] = ["Name", "ID", "School", "Email", "Company"]
   dataSource
 
   student_info = new FormGroup({
     student_name: new FormControl('', Validators.required),
     student_id: new FormControl('', Validators.required),
     student_email: new FormControl('', [Validators.required, Validators.email]),
-    student_phone: new FormControl('', Validators.required),
+    student_school: new FormControl('', Validators.required),
   })
   deleteStudentID: string = ""
 

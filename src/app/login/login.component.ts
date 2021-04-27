@@ -28,7 +28,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private snackBar: MatSnackBar, private appService: AppService, private router:Router, private dialog:MatDialog) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.appService.deleteCookie()
+  }
 
   login_info = new FormGroup({
     student_name: new FormControl('', Validators.required),
