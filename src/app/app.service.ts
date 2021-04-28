@@ -65,7 +65,7 @@ export class AppService {
   }
 
   getLog(): Observable < any > {
-    return this.httpClient.get < any > (`http://localhost:8001/manage/log`, {
+    return this.httpClient.get < any > (`${this.url}/manage/log`, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.getCookie()),
     }).pipe(delay(1500))
   }
