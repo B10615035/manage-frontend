@@ -20,6 +20,7 @@ import { SpinDialogComponent } from './dialog/spin-dialog/spin-dialog.component'
 import { InfoDialogComponent } from './dialog/info-dialog/info-dialog.component';
 import { LoginComponent } from './login/login.component';
 import { CompanyInfoComponent } from './company-info/company-info.component';
+import { LogComponent } from './log/log.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { CompanyInfoComponent } from './company-info/company-info.component';
     SpinDialogComponent,
     InfoDialogComponent,
     LoginComponent,
-    CompanyInfoComponent
+    CompanyInfoComponent,
+    LogComponent
   ],
   imports: [
     BrowserModule,

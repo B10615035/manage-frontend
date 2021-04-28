@@ -1,0 +1,34 @@
+<div class="log_block">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="Idnetity">
+      <th mat-header-cell *matHeaderCellDef> 身份 </th>
+      <td mat-cell *matCellDef="let element"> {{element.identity}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef> 姓名 </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ID">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef> 行為 </th>
+      <td mat-cell *matCellDef="let element"> {{element.action}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Content">
+      <th mat-header-cell *matHeaderCellDef> 內容 </th>
+      <td mat-cell *matCellDef="let element"> {{element.content}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 30, 50, 100]">
+  </mat-paginator>
+</div>

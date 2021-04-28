@@ -22,12 +22,14 @@ export class AppService {
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {}
 
+  url = "http://3.113.9.185:8001"
+
   loginRequest(login_info): Observable < any > {
     var data = {
       name: login_info.value.student_name,
       password: login_info.value.student_password
     }
-    return this.httpClient.post < any > (`http://54.199.212.42:8001/manage/login`, data, {
+    return this.httpClient.post < any > (`${this.url}/manage/login`, data, {
       headers: new HttpHeaders,
     }).pipe(delay(1500))
   }
@@ -39,25 +41,31 @@ export class AppService {
       email: student_info.value.student_email,
       school: student_info.value.student_school,
     }
-    return this.httpClient.post < any > ("http://54.199.212.42:8001/manage/student", data, {
+    return this.httpClient.post < any > (`${this.url}/manage/student`, data, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.getCookie()),
     }).pipe(delay(1500))
   }
 
   getAllStudent(): Observable < any > {
-    return this.httpClient.get < any > ("http://54.199.212.42:8001/manage/student", {
+    return this.httpClient.get < any > (`${this.url}/manage/student`, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.getCookie()),
     }).pipe(delay(1500))
   }
 
   deleteStudent(student_id): Observable < any > {
-    return this.httpClient.delete < any > (`http://54.199.212.42:8001/manage/student/${student_id}`, {
+    return this.httpClient.delete < any > (`${this.url}/manage/student/${student_id}`, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.getCookie()),
     }).pipe(delay(1500))
   }
 
   getAllCompany(): Observable < any > {
-    return this.httpClient.get < any > ("http://54.199.212.42:8001/manage/company", {
+    return this.httpClient.get < any > (`${this.url}/manage/company`, {
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.getCookie()),
+    }).pipe(delay(1500))
+  }
+
+  getLog(): Observable < any > {
+    return this.httpClient.get < any > (`http://localhost:8001/manage/log`, {
       headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.getCookie()),
     }).pipe(delay(1500))
   }
@@ -79,7 +87,7 @@ export class AppService {
     var data = this.getCookie()
     if (!data)
       data = "login"
-    return this.httpClient.post < any > (`http://54.199.212.42:8001/auth`, {
+    return this.httpClient.post < any > (`${this.url}/auth`, {
       token: data
     }, {
       headers: new HttpHeaders(),
