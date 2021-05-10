@@ -32,8 +32,13 @@
       font-weight: bold;
     }
   
-    .mat-column-Email {
-      max-width: 300px !important;
+    .mat-column-Content {
+      width: 300px !important;
+      white-space: pre-wrap !important;
+    }
+
+    .mat-column-Time {
+      width: 200px !important;
       white-space: pre-wrap !important;
     }
   }

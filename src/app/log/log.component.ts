@@ -33,13 +33,14 @@ export class LogComponent implements OnInit {
     static: true
   }) paginator: MatPaginator;
 
-  displayedColumns: string[] = ["Idnetity", "Name", "ID", "Action", "Content"]
+  displayedColumns: string[] = ["Idnetity", "Name", "ID", "Action", "Content", "Time"]
   dataSource
 
   create_table() {
     var spinDialog = this.dialog.open(SpinDialogComponent)
     this.appService.getLog().subscribe(
       next => {
+        console.log(next)
         spinDialog.close()
         this.dataSource = new MatTableDataSource(next)
         this.dataSource.paginator = this.paginator;
