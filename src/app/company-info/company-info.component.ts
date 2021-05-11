@@ -36,20 +36,45 @@ export class CompanyInfoComponent implements OnInit {
 
   displayedColumns: string[] = ["Name", "Student"]
   dataSource
+  companyData
 
   ngOnInit(): void {
     var spinDialog = this.dialog.open(SpinDialogComponent)
     this.appService.getAllCompany().subscribe(
       next => {
         spinDialog.close()
+        this.companyData = next
         this.dataSource = new MatTableDataSource(next)
         this.dataSource.paginator = this.paginator;
         this.dialog.open(InfoDialogComponent, {
           data: {
-            result: {info: 'Load data success'}
+            result: {
+              info: 'Load data success'
+            }
           }
         })
+        // this.make_csv(next)
       }
     )
+  }
+
+  make_csv() {
+    var csv = "公司,學生\r\n"
+    for (let i in this.companyData) {
+      csv += this.companyData[i].name + ",\"" + this.companyData[i].students + "\"\r\n"
+    }
+
+    let blob = new Blob([csv], {
+      type: 'text/csv;charset=utf-8;'
+    });
+
+    let url = URL.createObjectURL(blob);
+    let download = document.createElement("a");
+    download.setAttribute("href", url);
+    download.setAttribute("download", `CompanyChooseStudent.csv`);
+    download.style.visibility = "hidden";
+    document.body.appendChild(download);
+    download.click();
+    document.body.removeChild(download);
   }
 }

@@ -61,6 +61,8 @@ export class StudentInfoComponent implements OnInit {
   })
   deleteStudentID: string = ""
 
+  studentData
+
   create_student_submit() {
     var student_info_check = true
     Object.keys(this.student_info.controls).forEach(key => {
@@ -123,6 +125,7 @@ export class StudentInfoComponent implements OnInit {
     this.appService.getAllStudent().subscribe(
       next => {
         spinDialog.close()
+        this.studentData = next
         this.dataSource = new MatTableDataSource(next)
         this.dataSource.paginator = this.paginator;
         this.dialog.open(InfoDialogComponent, {
@@ -132,5 +135,24 @@ export class StudentInfoComponent implements OnInit {
         })
       }
     )
+  }
+
+  make_csv() {
+    var csv = "學生,准考證,學校,公司\r\n"
+    for (let i in this.studentData)
+      csv += this.studentData[i].name + ',' + this.studentData[i].id + ',\"' + this.studentData[i].school + "\",\"" + this.studentData[i].company + "\"\r\n"
+
+    let blob = new Blob([csv], {
+      type: 'text/csv;charset=utf-8;'
+    });
+
+    let url = URL.createObjectURL(blob);
+    let download = document.createElement("a");
+    download.setAttribute("href", url);
+    download.setAttribute("download", `StudentChooseCompany.csv`);
+    download.style.visibility = "hidden";
+    document.body.appendChild(download);
+    download.click();
+    document.body.removeChild(download);
   }
 }

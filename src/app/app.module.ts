@@ -21,6 +21,7 @@ import { InfoDialogComponent } from './dialog/info-dialog/info-dialog.component'
 import { LoginComponent } from './login/login.component';
 import { CompanyInfoComponent } from './company-info/company-info.component';
 import { LogComponent } from './log/log.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { LogComponent } from './log/log.component';
     InfoDialogComponent,
     LoginComponent,
     CompanyInfoComponent,
-    LogComponent
+    LogComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { AuthGuard } from './auth.guard';
 import { CompanyInfoComponent } from './company-info/company-info.component';
 import { LogComponent } from './log/log.component';
 import { LoginComponent } from './login/login.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 import { StudentInfoComponent } from './student-info/student-info.component';
 
 const routes: Routes = [
@@ -11,7 +12,8 @@ const routes: Routes = [
   {path:'student', component:StudentInfoComponent, canActivate: [AuthGuard]},
   {path:'company', component:CompanyInfoComponent, canActivate: [AuthGuard]},
   {path:'logs', component:LogComponent, canActivate: [AuthGuard]},
-  {path:'', component:StudentInfoComponent, canActivate: [AuthGuard]}
+  {path:'', component:ScheduleComponent, canActivate: [AuthGuard]},
+  {path:'schedule', component:ScheduleComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
