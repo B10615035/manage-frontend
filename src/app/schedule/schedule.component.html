@@ -1,49 +1,59 @@
 <div class="schedule_block">
   <table mat-table [dataSource]="dataSource">
-
+    
     <ng-container matColumnDef="Time">
       <th mat-header-cell *matHeaderCellDef> Time </th>
-      <td mat-cell *matCellDef="let element"> {{element.start}} <br> ~ <br> {{element.end}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.start}} ~ {{element.end}} </td>
     </ng-container>
 
     <ng-container matColumnDef="com1">
-      <th mat-header-cell *matHeaderCellDef> 中華電信 </th>
+      <th mat-header-cell *matHeaderCellDef> 中華電信 <br> TR-411</th>
       <td mat-cell *matCellDef="let element" [innerHTML]="element.com1"></td>
     </ng-container>
 
     <ng-container matColumnDef="com2">
-      <th mat-header-cell *matHeaderCellDef> 台達電子 </th>
+      <th mat-header-cell *matHeaderCellDef> 台達電子<br> TR-412-1</th>
       <td mat-cell *matCellDef="let element" [innerHTML]="element.com2"></td>
     </ng-container>
 
     <ng-container matColumnDef="com3">
-      <th mat-header-cell *matHeaderCellDef> 邑富 </th>
+      <th mat-header-cell *matHeaderCellDef> 邑富<br>TR-413-1 </th>
       <td mat-cell *matCellDef="let element" [innerHTML]="element.com3"></td>
     </ng-container>
 
     <ng-container matColumnDef="com4">
-      <th mat-header-cell *matHeaderCellDef> 利凌企業 </th>
+      <th mat-header-cell *matHeaderCellDef> 利凌企業<br> TR-412-2</th>
       <td mat-cell *matCellDef="let element" [innerHTML]="element.com4"></td>
     </ng-container>
 
     <ng-container matColumnDef="com5">
-      <th mat-header-cell *matHeaderCellDef> 英業達 </th>
+      <th mat-header-cell *matHeaderCellDef> 英業達 <br>TR-413-2</th>
       <td mat-cell *matCellDef="let element" [innerHTML]="element.com5"></td>
     </ng-container>
 
     <ng-container matColumnDef="com6">
-      <th mat-header-cell *matHeaderCellDef> 研揚科技 </th>
+      <th mat-header-cell *matHeaderCellDef> 研揚IOT<br> TR-511</th>
       <td mat-cell *matCellDef="let element" [innerHTML]="element.com6"></td>
     </ng-container>
 
     <ng-container matColumnDef="com7">
-      <th mat-header-cell *matHeaderCellDef> 鈊象電子 </th>
+      <th mat-header-cell *matHeaderCellDef> 鈊象電子<br> TR-509</th>
       <td mat-cell *matCellDef="let element" [innerHTML]="element.com7"></td>
     </ng-container>
 
     <ng-container matColumnDef="com8">
-      <th mat-header-cell *matHeaderCellDef> 緯創資通 </th>
+      <th mat-header-cell *matHeaderCellDef> 緯創資通<br> TR-510</th>
       <td mat-cell *matCellDef="let element" [innerHTML]="element.com8"></td>
+    </ng-container>
+
+    <ng-container matColumnDef="com9">
+      <th mat-header-cell *matHeaderCellDef> 研揚SDD1<br>TR-512 </th>
+      <td mat-cell *matCellDef="let element" [innerHTML]="element.com9"></td>
+    </ng-container>
+
+    <ng-container matColumnDef="com10">
+      <th mat-header-cell *matHeaderCellDef> 研揚SDD2<br> TR-512</th>
+      <td mat-cell *matCellDef="let element" [innerHTML]="element.com10"></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

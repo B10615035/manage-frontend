@@ -6,6 +6,7 @@ import { LogComponent } from './log/log.component';
 import { LoginComponent } from './login/login.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { StudentInfoComponent } from './student-info/student-info.component';
+import { StudentScheduleComponent } from './student-schedule/student-schedule.component';
 
 const routes: Routes = [
   {path:'login', component:LoginComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path:'company', component:CompanyInfoComponent, canActivate: [AuthGuard]},
   {path:'logs', component:LogComponent, canActivate: [AuthGuard]},
   {path:'', component:ScheduleComponent, canActivate: [AuthGuard]},
-  {path:'schedule', component:ScheduleComponent, canActivate: [AuthGuard]}
+  {path:'schedule', component:ScheduleComponent, canActivate: [AuthGuard]},
+  {path:'schedule-stu', component:StudentScheduleComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
 import { CompanyInfoComponent } from './company-info/company-info.component';
 import { LogComponent } from './log/log.component';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { StudentScheduleComponent } from './student-schedule/student-schedule.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ScheduleComponent } from './schedule/schedule.component';
     LoginComponent,
     CompanyInfoComponent,
     LogComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    StudentScheduleComponent
   ],
   imports: [
     BrowserModule,
